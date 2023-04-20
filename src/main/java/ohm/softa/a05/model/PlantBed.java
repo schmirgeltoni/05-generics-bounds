@@ -10,7 +10,7 @@ import ohm.softa.a05.collections.SimpleListImpl;
  */
 public class PlantBed<T extends Plant> {
 
-	private final SimpleList<T> plants;
+	private SimpleList<T> plants;
 
 	public PlantBed() {
 		plants = new SimpleListImpl<>();
@@ -34,6 +34,6 @@ public class PlantBed<T extends Plant> {
 	}
 
 	public void remove(T p) {
-		// ....
+		plants = plants.filter(o -> !o.equals(p));
 	}
 }
