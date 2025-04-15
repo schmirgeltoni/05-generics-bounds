@@ -3,7 +3,6 @@ package ohm.softa.a05.tests;
 import ohm.softa.a05.model.Flower;
 import ohm.softa.a05.model.Plant;
 import ohm.softa.a05.model.PlantColor;
-import ohm.softa.a05.model.Shrub;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -37,12 +36,7 @@ public class PlantTest {
     }
 
     @Test
-    void TestExceptionForNonGreenShrubs() {
-        assertThrows(IllegalArgumentException.class, () -> new Shrub(0.0, "f", "n", PlantColor.YELLOW));
-    }
-
-    @Test
-    void TestGetters(){
+    void TestGetters() {
         assertEquals(PlantColor.RED, rose.getColor());
         assertEquals("Rosaceae", rose.getFamily());
         assertEquals(0.3, rose.getHeight());

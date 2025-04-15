@@ -1,5 +1,9 @@
 package ohm.softa.a05.model;
 
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
+import java.util.Objects;
+
 abstract public class Plant implements Comparable<Plant> {
     protected double height;
     protected String family;
@@ -31,7 +35,7 @@ abstract public class Plant implements Comparable<Plant> {
     public boolean equals(Object obj) {
         if (obj instanceof Plant) {
             var o = (Plant) obj;
-            return o.height == height && o.color == color && o.family == family && o.name == name;
+            return o.height == height && o.color == color && Objects.equals(o.family, family) && Objects.equals(o.name, name);
         } else
             return false;
     }
@@ -39,5 +43,14 @@ abstract public class Plant implements Comparable<Plant> {
     @Override
     public String toString() {
         return name + ", " + family + ". Height: " + height + ". Color: " + color;
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37).
+                append(family).
+                append(name).
+                append(height).
+                toHashCode();
     }
 }
