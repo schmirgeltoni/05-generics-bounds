@@ -6,7 +6,10 @@ public class Shrub extends Plant {
         this.height = height;
         this.family = family;
         this.name = name;
-        this.color = PlantColor.GREEN;
+    }
 
+    @Override
+    public PlantColor getColor() {
+        return PlantColor.GREEN;
     }
 }

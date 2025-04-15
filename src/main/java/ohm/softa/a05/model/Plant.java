@@ -8,7 +8,6 @@ abstract public class Plant implements Comparable<Plant> {
     protected double height;
     protected String family;
     protected String name;
-    protected PlantColor color;
 
     @Override
     public int compareTo(Plant o) {
@@ -27,22 +26,20 @@ abstract public class Plant implements Comparable<Plant> {
         return name;
     }
 
-    public PlantColor getColor() {
-        return color;
-    }
+    abstract public PlantColor getColor();
 
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Plant) {
             var o = (Plant) obj;
-            return o.height == height && o.color == color && Objects.equals(o.family, family) && Objects.equals(o.name, name);
+            return o.height == height && o.getColor() == getColor() && Objects.equals(o.family, family) && Objects.equals(o.name, name);
         } else
             return false;
     }
 
     @Override
     public String toString() {
-        return name + ", " + family + ". Height: " + height + ". Color: " + color;
+        return name + ", " + family + ". Height: " + height + ". Color: " + getColor();
     }
 
     @Override
